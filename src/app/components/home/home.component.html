@@ -1,0 +1,8 @@
+<div *ngFor="let movie of moviesList">
+  <p>{{movie.title}}</p>
+  <p>{{movie.imagePath}}</p>
+  <img [src]="movie.imageUrl" alt="img">
+</div>
+
+
+<button (click)="logoutUser()">log out</button>

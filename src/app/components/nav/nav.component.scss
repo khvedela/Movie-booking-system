@@ -1,0 +1,67 @@
+nav {
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .logo {
+    font-family: "Poppins Black";
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .links {
+    ul {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+
+      li a {
+        color: black;
+        font-family: Poppins;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 2rem;
+    font-family: Poppins;
+
+    .search {
+      img {
+        cursor: pointer;
+      }
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 1rem;
+
+      h3 {
+        cursor: pointer;
+      }
+      .profile-picture {
+        height: 50px;
+        width: 50px;
+        background-color: black;
+        border-radius: 50%;
+        border: 3px solid orange;
+        cursor: pointer;
+      }
+    }
+
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  nav {
+    flex-direction: column;
+  }
+}

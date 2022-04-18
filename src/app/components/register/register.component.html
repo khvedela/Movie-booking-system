@@ -1,0 +1,29 @@
+<form [formGroup]="registerForm" (ngSubmit)="initiateRegister()">
+  <h1>Register</h1>
+  <mat-form-field appearance="outline">
+    <mat-label>username</mat-label>
+    <input matInput type="text" placeholder="username..." formControlName="userName">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>phone</mat-label>
+    <input matInput type="phone" placeholder="phone..." formControlName="phoneNumber">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>email</mat-label>
+    <input matInput type="email" placeholder="email..." formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>password</mat-label>
+    <input matInput type="password" placeholder="password..." formControlName="password">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>password confirm</mat-label>
+    <input matInput type="password" placeholder="password..." formControlName="passwordConfirm">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">register</button>
+</form>

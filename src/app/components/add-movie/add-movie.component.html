@@ -1,0 +1,153 @@
+<section class="create container container-fluid">
+  <h1>add a movie</h1>
+  <form [formGroup]="movieForm">
+    <mat-stepper [linear]="isLinear" #stepper>
+      <mat-step>
+        <div style="display: flex; flex-direction: column">
+          <mat-form-field appearance="outline">
+            <mat-label>title</mat-label>
+            <input matInput placeholder="title" formControlName="title">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>duration</mat-label>
+            <input type="number" matInput placeholder="duration" formControlName="durationInMinutes">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>language</mat-label>
+            <input type="number" matInput placeholder="language" formControlName="language">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>release Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="releaseDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>country</mat-label>
+            <mat-select formControlName="country">
+              <mat-option *ngFor="let country of countryList" [value]="country">
+                {{country}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="example-chip-list" appearance="outline">
+            <mat-label>genres</mat-label>
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <mat-chip *ngFor="let genre of genres" (removed)="remove(genre)">
+                {{genre}}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="New genre..."
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>director</mat-label>
+            <input matInput placeholder="director" formControlName="director">
+          </mat-form-field>
+
+          <div>
+            <input type="file" (change)="readUrl($event)" formControlName="file">
+          </div>
+          <button mat-button matStepperNext (click)="onSubmit()">Next</button>
+        </div>
+      </mat-step>
+
+      <mat-step label="Preview">
+        <img [src]="url" alt="">
+        <code>
+          {{movieForm.value.title}}
+          <br>
+          {{movieForm.value.description}}
+          <br>
+          {{movieForm.value.duration}}
+          <br>
+          {{movieForm.value.language}}
+          <br>
+          {{movieForm.value.releaseDate}}
+          <br>
+          {{movieForm.value.country}}
+          <br>
+          {{movieForm.value.director}}
+          <br>
+          {{movieForm.value.genres}}
+          <img src="{{movieForm.value.poster}}" alt="">
+        </code>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+          <button mat-raised-button type="submit" (click)="onSubmit()">create a movie</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </form>
+</section>
+<!--<form [formGroup]="movieForm">-->
+<!--  <div style="display: flex; flex-direction: column">-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>title</mat-label>-->
+<!--      <input matInput placeholder="title" formControlName="title">-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>description</mat-label>-->
+<!--      <textarea matInput formControlName="description"></textarea>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>duration</mat-label>-->
+<!--      <input min="30" max="300" type="number" matInput placeholder="duration" formControlName="duration">-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>language</mat-label>-->
+<!--      <input type="number" matInput placeholder="language" formControlName="language">-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>release Date</mat-label>-->
+<!--      <input matInput [matDatepicker]="picker" formControlName="releaseDate">-->
+<!--      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--      <mat-datepicker #picker></mat-datepicker>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>country</mat-label>-->
+<!--      <mat-select formControlName="country">-->
+<!--        <mat-option *ngFor="let country of countryList" [value]="country">-->
+<!--          {{country}}-->
+<!--        </mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
+
+<!--    <mat-form-field appearance="outline">-->
+<!--      <mat-label>director</mat-label>-->
+<!--      <input matInput placeholder="director" formControlName="director">-->
+<!--    </mat-form-field>-->
+<!--&lt;!&ndash;    <button mat-button matStepperNext>Next</button>&ndash;&gt;-->
+<!--    <button mat-raised-button (click)="onSubmit()">create a movie</button>-->
+<!--  </div>-->
+<!--</form>-->
